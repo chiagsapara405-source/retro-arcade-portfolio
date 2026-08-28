@@ -77,8 +77,8 @@ export const footerNavLinks = [
 ];
 
 export const githubUrl = "https://github.com/chiagsapara405-source";
-export const githubReposUrl =
-  "https://github.com/chiagsapara405-source?tab=repositories";
+export const retroPortfolioUrl =
+  "https://github.com/chiagsapara405-source/retro-arcade-portfolio";
 
 export const gameBoyStats = [
   { key: "CLASS", dots: "··············", value: "DEV", color: "green" as const },

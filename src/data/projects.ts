@@ -1,4 +1,4 @@
-import { githubReposUrl } from "./siteData";
+import { retroPortfolioUrl } from "./siteData";
 
 export interface Project {
   id: number;
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     actions: [
       {
         label: "</> CODE",
-        url: githubReposUrl,
+        url: retroPortfolioUrl,
         primary: true,
       },
     ],
