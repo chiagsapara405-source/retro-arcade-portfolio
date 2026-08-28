@@ -64,6 +64,7 @@ Content (projects, skills, stats, links) lives entirely in `src/data/` — edit 
 
 ## Links
 
+- Live: https://chiragsapara.vercel.app/
 - GitHub: https://github.com/chiagsapara405-source
 - Live projects: [QuickPay](https://quick-pays.vercel.app/) · [Caffeine](https://caffeineco.vercel.app/)
 
