@@ -1,0 +1,46 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Tooling / generated artifacts
+.claude
+vibe_images
+.firebase/
+firebase-debug.log
+
+# Old / backup sources (not part of the live app)
+src/backup/
+
+# Environment variables — never commit secrets
+.env
+.env.*
+*.env
+!.env.example
+
+# OS / misc
+Thumbs.db
+Desktop.ini
+
+# Unused legacy asset (only referenced by src/backup)
+src/assets/starry-night-sky-over-mountains-profilo-.jpg

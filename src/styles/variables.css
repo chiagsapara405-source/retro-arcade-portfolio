@@ -1,0 +1,39 @@
+/* ==========================================================================
+   DESIGN TOKENS / CSS VARIABLES
+   Theme: Arcade Cyber Retro / CRT Phosphor Glow
+   ========================================================================== */
+
+:root {
+  /* Pixel Fonts */
+  --font-arcade: 'Press Start 2P', cursive, monospace;
+  --font-pixel: 'Pixelify Sans', sans-serif;
+  --font-terminal: 'VT323', monospace;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Palette - Neon Arcade on Midnight Canvas */
+  --bg-dark: #07090e;
+  --bg-surface: #0f1422;
+  --bg-surface-elevated: #161e31;
+  --bg-card: #111827;
+  --bg-dialog: #0b111e;
+
+  /* Accent Glows */
+  --pixel-mint: #00ff88;
+  --pixel-cyan: #00f0ff;
+  --pixel-crimson: #ff0055;
+  --pixel-ruby: #ff2a6d;
+  --pixel-gold: #ffbe0b;
+  --pixel-amber: #fb8500;
+  --pixel-purple: #9d4edd;
+  --pixel-white: #ffffff;
+  --pixel-muted: #8b9bb4;
+  --pixel-dark-border: #000000;
+
+  /* 3D Pixel Border Shadows */
+  --pixel-shadow-sm: 3px 3px 0px #000000;
+  --pixel-shadow-md: 4px 4px 0px #000000, -2px -2px 0px rgba(255, 255, 255, 0.08);
+  --pixel-shadow-lg: 6px 6px 0px #000000, -3px -3px 0px rgba(255, 255, 255, 0.12);
+  --pixel-shadow-neon: 4px 4px 0px #000000, 0 0 12px rgba(0, 255, 136, 0.35);
+  --pixel-shadow-crimson: 4px 4px 0px #000000, 0 0 12px rgba(255, 0, 85, 0.35);
+  --pixel-shadow-cyan: 4px 4px 0px #000000, 0 0 12px rgba(0, 240, 255, 0.35);
+}

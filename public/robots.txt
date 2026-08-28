@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: uncomment once a sitemap.xml is deployed
+# Sitemap: https://caffeineco.vercel.app/sitemap.xml

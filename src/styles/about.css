@@ -1,0 +1,96 @@
+/* ==========================================================================
+   ABOUT / NPC LORE - RPG DIALOGUE BOX
+   ========================================================================== */
+
+.about-section {
+  padding: 90px 24px;
+  background: var(--bg-surface);
+  border-bottom: 4px solid #000;
+}
+
+.dialogue-box-container {
+  max-width: 1000px;
+  margin: 36px auto 0;
+  background: var(--bg-dialog);
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0 var(--pixel-mint), -3px -3px 0 var(--pixel-cyan);
+  padding: 32px 28px;
+  position: relative;
+}
+
+.dialogue-speaker-tab {
+  position: absolute;
+  top: -18px;
+  left: 28px;
+  background: var(--pixel-mint);
+  color: #000;
+  font-family: var(--font-arcade);
+  font-size: 0.72rem;
+  font-weight: bold;
+  padding: 4px 14px;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.dialogue-layout {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 26px;
+  align-items: start;
+}
+
+.dialogue-portrait {
+  width: 130px;
+  height: 130px;
+  background: #070a10;
+  border: 3px solid #000;
+  box-shadow: 3px 3px 0 var(--pixel-gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.dialogue-portrait-icon {
+  font-size: 2.8rem;
+  margin-bottom: 4px;
+  animation: float-sprite 3s ease-in-out infinite;
+}
+
+@keyframes float-sprite {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.dialogue-portrait-tag {
+  font-family: var(--font-arcade);
+  font-size: 0.55rem;
+  color: var(--pixel-gold);
+}
+
+.dialogue-text-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dialogue-text {
+  font-family: var(--font-terminal);
+  font-size: 1.35rem;
+  line-height: 1.4;
+  color: var(--pixel-white);
+}
+
+.dialogue-cursor-indicator {
+  align-self: flex-end;
+  color: var(--pixel-gold);
+  font-size: 1.2rem;
+  animation: blink-cursor 0.8s infinite steps(2);
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0; transform: translateY(4px); }
+}

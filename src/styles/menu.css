@@ -1,0 +1,83 @@
+/* ==========================================================================
+   FULLSCREEN MENU (MOBILE)
+   ========================================================================== */
+
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(7, 9, 14, 0.98);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+  border-bottom: 4px solid var(--pixel-mint);
+}
+
+.menu-frame {
+  background: var(--bg-surface);
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0 var(--pixel-cyan), -4px -4px 0 var(--pixel-ruby);
+  padding: 40px 30px;
+  max-width: 90%;
+  width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.menu-title-badge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--pixel-gold);
+  color: #000;
+  font-family: var(--font-arcade);
+  font-size: 0.75rem;
+  padding: 4px 12px;
+  border: 2px solid #000;
+  white-space: nowrap;
+}
+
+.menu-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.menu-link-item a {
+  font-family: var(--font-arcade);
+  font-size: 1.1rem;
+  color: var(--pixel-white);
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+}
+
+.menu-link-item a:hover {
+  color: #000;
+  background: var(--pixel-mint);
+  border-color: #000;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.menu-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--pixel-ruby);
+  color: #fff;
+  border: 2px solid #000;
+  font-family: var(--font-arcade);
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  cursor: pointer;
+}

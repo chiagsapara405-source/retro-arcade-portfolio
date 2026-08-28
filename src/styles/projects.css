@@ -1,0 +1,187 @@
+/* ==========================================================================
+   QUEST BOARD - SELECTED PROJECTS (CARTRIDGES)
+   ========================================================================== */
+
+.projects-section {
+  padding: 90px 24px;
+  background: var(--bg-dark);
+  border-bottom: 4px solid #000;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.project-card {
+  background: var(--bg-surface);
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0 #000, -2px -2px 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--pixel-cyan);
+  box-shadow: 8px 8px 0 var(--pixel-mint), -2px -2px 0 var(--pixel-cyan);
+}
+
+/* Cartridge Top Grip */
+.cartridge-grip {
+  height: 14px;
+  background: #080d18;
+  border-bottom: 2px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.cartridge-grip span {
+  width: 18px;
+  height: 4px;
+  background: #1f2b42;
+}
+
+.project-screen {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: #060911;
+  border-bottom: 3px solid #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-screen-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.3) 0px,
+    rgba(0, 0, 0, 0.3) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.project-pixel-art-icon {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 12px var(--pixel-mint));
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.project-card:hover .project-pixel-art-icon {
+  transform: scale(1.15) rotate(4deg);
+}
+
+.project-badge-slot {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  background: #000;
+  color: var(--pixel-gold);
+  border: 1px solid var(--pixel-gold);
+  font-family: var(--font-arcade);
+  font-size: 0.58rem;
+  padding: 3px 8px;
+}
+
+.project-info {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-title {
+  font-family: var(--font-arcade);
+  font-size: 0.9rem;
+  color: var(--pixel-white);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-desc {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--pixel-muted);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.item-tag {
+  font-family: var(--font-terminal);
+  font-size: 0.9rem;
+  background: #0b111c;
+  color: var(--pixel-cyan);
+  border: 1px solid #1f3352;
+  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  border-top: 2px dashed #1c273e;
+  padding-top: 14px;
+}
+
+.btn-cartridge-action {
+  font-family: var(--font-arcade);
+  font-size: 0.65rem;
+  padding: 8px 14px;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.1s;
+}
+
+.btn-cartridge-action.primary {
+  background: var(--pixel-mint);
+  color: #000;
+}
+.btn-cartridge-action.primary:hover {
+  background: var(--pixel-cyan);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 #000;
+}
+
+.btn-cartridge-action.secondary {
+  background: #172033;
+  color: var(--pixel-white);
+}
+.btn-cartridge-action.secondary:hover {
+  background: #23314d;
+  color: var(--pixel-gold);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 #000;
+}

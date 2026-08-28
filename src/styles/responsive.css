@@ -1,0 +1,38 @@
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .hud-nav-links {
+    display: none;
+  }
+  .hud-menu-btn {
+    display: flex;
+  }
+  .hero-content-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-top: 20px;
+  }
+  .hero-right {
+    justify-content: flex-start;
+  }
+  .dialogue-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .dialogue-portrait {
+    width: 90px;
+    height: 90px;
+  }
+  .dialogue-portrait-icon {
+    font-size: 2rem;
+  }
+  .footer-credits-row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .gameboy-shell {
+    width: 260px;
+  }
+}

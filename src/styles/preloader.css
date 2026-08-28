@@ -1,0 +1,70 @@
+/* ==========================================================================
+   PRELOADER - 8-BIT BOOT SCREEN
+   ========================================================================== */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #05070c;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.preloader-box {
+  background: var(--bg-surface);
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0 var(--pixel-mint);
+  padding: 32px 40px;
+  text-align: center;
+  max-width: 90%;
+  width: 440px;
+}
+
+.preloader-title {
+  font-family: var(--font-arcade);
+  font-size: 1.2rem;
+  color: var(--pixel-mint);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.preloader-sub {
+  font-family: var(--font-terminal);
+  font-size: 1.2rem;
+  color: var(--pixel-muted);
+  margin-bottom: 20px;
+}
+
+.pixel-loading-bar-wrap {
+  width: 100%;
+  height: 20px;
+  background: #000;
+  border: 2px solid #334155;
+  padding: 2px;
+  position: relative;
+}
+
+.pixel-loading-bar {
+  height: 100%;
+  width: 0%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pixel-mint) 0px,
+    var(--pixel-mint) 8px,
+    #050811 8px,
+    #050811 10px
+  );
+  box-shadow: 0 0 10px var(--pixel-mint);
+}
+
+.preloader-hint {
+  font-family: var(--font-terminal);
+  font-size: 1.1rem;
+  color: var(--pixel-gold);
+  margin-top: 14px;
+  animation: blink-text 1s infinite steps(2);
+}

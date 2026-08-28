@@ -1,0 +1,54 @@
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  image-rendering: pixelated;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-dark);
+}
+
+body {
+  font-family: var(--font-pixel), var(--font-mono), sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--pixel-white);
+  overflow-x: hidden;
+  line-height: 1.6;
+  position: relative;
+  font-size: 16px;
+  background-image:
+    radial-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Custom Pixel Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  background: #080b12;
+}
+::-webkit-scrollbar-track {
+  background: #080b12;
+  border-left: 2px solid #1a233a;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pixel-mint);
+  border: 2px solid #000000;
+  box-shadow: inset -2px -2px 0px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pixel-cyan);
+}
+
+/* Pixel Selection */
+::selection {
+  background-color: var(--pixel-mint);
+  color: #000000;
+}

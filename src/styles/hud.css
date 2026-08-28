@@ -1,0 +1,288 @@
+/* ==========================================================================
+   RETRO HUD / NAVIGATION BAR
+   ========================================================================== */
+
+.retro-hud-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(7, 9, 14, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 3px solid #000000;
+  box-shadow: 0 4px 0 #1a233a;
+  padding: 8px 24px;
+}
+
+/* XP/Scroll Progress Bar */
+.hud-scroll-bar {
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.hud-scroll-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--pixel-mint), var(--pixel-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  box-shadow: 0 0 8px var(--pixel-mint);
+}
+
+.hud-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.hud-player-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.hud-avatar {
+  width: 36px;
+  height: 36px;
+  background: var(--bg-surface);
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 var(--pixel-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-arcade);
+  font-size: 0.75rem;
+  color: var(--pixel-mint);
+  position: relative;
+  overflow: hidden;
+}
+
+.hud-avatar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.15), transparent 70%);
+}
+
+.hud-stats-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hud-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud-player-name {
+  font-family: var(--font-arcade);
+  font-size: 0.72rem;
+  color: var(--pixel-white);
+  letter-spacing: 0.5px;
+}
+
+.hud-level-badge {
+  font-family: var(--font-terminal);
+  font-size: 0.85rem;
+  color: var(--pixel-gold);
+  background: #1e1b10;
+  padding: 1px 6px;
+  border: 1px solid var(--pixel-gold);
+}
+
+.hud-bars-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-terminal);
+  font-size: 0.85rem;
+  font-weight: bold;
+  position: relative;
+}
+.hud-bar-item.hp span { color: var(--pixel-mint); }
+.hud-bar-item.mp span { color: var(--pixel-cyan); }
+
+/* Tooltip for HP/MP bars */
+.hud-bar-item::after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  font-family: var(--font-terminal);
+  font-size: 0.85rem;
+  font-weight: normal;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  pointer-events: none;
+  z-index: 200;
+  border: 1px solid;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.hud-bar-item.hp::after {
+  content: "Coffee Reserve";
+  background: #0a1210;
+  color: var(--pixel-mint);
+  border-color: var(--pixel-mint);
+}
+
+.hud-bar-item.mp::after {
+  content: "Motivation";
+  background: #0a1018;
+  color: var(--pixel-cyan);
+  border-color: var(--pixel-cyan);
+}
+
+.hud-bar-item:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hud-mini-meter {
+  width: 48px;
+  height: 7px;
+  background: #000;
+  border: 1px solid #333;
+  position: relative;
+  overflow: hidden;
+}
+.hud-mini-meter-fill {
+  height: 100%;
+  width: 100%;
+}
+.hud-mini-meter.hp .hud-mini-meter-fill {
+  background: var(--pixel-mint);
+  animation: pulse-hp 2s infinite ease-in-out;
+}
+.hud-mini-meter.mp .hud-mini-meter-fill {
+  background: var(--pixel-cyan);
+}
+
+@keyframes pulse-hp {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+/* Nav Links - Desktop */
+.hud-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  list-style: none;
+}
+
+.hud-nav-link {
+  font-family: var(--font-arcade);
+  font-size: 0.65rem;
+  color: var(--pixel-muted);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hud-nav-link:hover {
+  color: var(--pixel-mint);
+  background: #111a24;
+  border: 1px solid var(--pixel-mint);
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-1px, -1px);
+}
+
+.hud-nav-link:hover::before {
+  content: '►';
+  color: var(--pixel-gold);
+  font-size: 0.6rem;
+}
+
+.hud-nav-link.active {
+  color: var(--pixel-cyan);
+  background: #111a24;
+  border: 1px solid var(--pixel-cyan);
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(-1px, -1px);
+}
+
+.hud-nav-link.active::before {
+  content: '►';
+  color: var(--pixel-cyan);
+  font-size: 0.6rem;
+}
+
+/* Actions Right */
+.hud-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pixel-btn-quest {
+  font-family: var(--font-arcade);
+  font-size: 0.68rem;
+  background: var(--pixel-mint);
+  color: #000;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+}
+
+.pixel-btn-quest:hover {
+  background: var(--pixel-cyan);
+  box-shadow: 4px 4px 0 #000, 0 0 10px var(--pixel-cyan);
+  transform: translate(-1px, -1px);
+}
+
+.pixel-btn-quest:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0;
+}
+
+.hud-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-surface);
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 var(--pixel-gold);
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hud-menu-btn span {
+  display: block;
+  height: 3px;
+  background: var(--pixel-gold);
+  width: 100%;
+}

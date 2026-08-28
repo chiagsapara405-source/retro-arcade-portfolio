@@ -1,0 +1,68 @@
+/* ==========================================================================
+   FOOTER - GAME CREDITS
+   ========================================================================== */
+
+footer {
+  padding: 50px 24px 35px;
+  background: #05070c;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.footer-nav a {
+  font-family: var(--font-arcade);
+  font-size: 0.65rem;
+  color: var(--pixel-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.footer-nav a:hover {
+  color: var(--pixel-mint);
+}
+
+.massive-arcade-banner {
+  font-family: var(--font-arcade);
+  font-size: clamp(1.6rem, 5vw, 3.8rem);
+  color: #121b2d;
+  letter-spacing: 4px;
+  user-select: none;
+  border-top: 2px dashed #141e30;
+  border-bottom: 2px dashed #141e30;
+  padding: 18px 0;
+  will-change: transform;
+}
+
+.footer-credits-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: var(--font-terminal);
+  font-size: 1.05rem;
+  color: var(--pixel-muted);
+}
+
+.footer-credits-row a {
+  color: var(--pixel-cyan);
+  text-decoration: none;
+}
+.footer-credits-row a:hover {
+  text-decoration: underline;
+}

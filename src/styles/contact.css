@@ -1,0 +1,101 @@
+/* ==========================================================================
+   CONTACT / FINAL BOSS STAGE - QUEST DISPATCH
+   ========================================================================== */
+
+.contact-section {
+  padding: 100px 24px;
+  background: #070a12;
+  border-bottom: 4px solid #000;
+  text-align: center;
+  position: relative;
+}
+
+.boss-fight-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #0d1422;
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0 var(--pixel-ruby), -3px -3px 0 var(--pixel-mint);
+  padding: 42px 28px;
+  position: relative;
+}
+
+.boss-badge {
+  display: inline-block;
+  background: var(--pixel-ruby);
+  color: #fff;
+  font-family: var(--font-arcade);
+  font-size: 0.68rem;
+  padding: 6px 12px;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+  margin-bottom: 16px;
+}
+
+.contact-headline {
+  font-family: var(--font-pixel), sans-serif;
+  font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+  font-weight: 700;
+  color: var(--pixel-white);
+  margin-bottom: 14px;
+  text-shadow: 3px 3px 0 #000;
+}
+
+.contact-sub {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--pixel-muted);
+  max-width: 580px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
+
+.contact-actions-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn-boss-action {
+  font-family: var(--font-arcade);
+  font-size: 0.75rem;
+  padding: 14px 22px;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  transition: all 0.1s;
+}
+
+.btn-boss-action.primary {
+  background: var(--pixel-mint);
+  color: #000;
+}
+.btn-boss-action.primary:hover {
+  background: var(--pixel-cyan);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000, 0 0 15px var(--pixel-cyan);
+}
+
+.btn-boss-action.danger {
+  background: var(--pixel-ruby);
+  color: #fff;
+}
+.btn-boss-action.danger:hover {
+  background: #ff477e;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000, 0 0 15px var(--pixel-ruby);
+}
+
+.contact-toast {
+  margin-top: 18px;
+  font-family: var(--font-terminal);
+  font-size: 1.1rem;
+  color: var(--pixel-mint);
+}

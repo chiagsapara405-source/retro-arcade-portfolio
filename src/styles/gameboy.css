@@ -1,0 +1,481 @@
+/* ==========================================================================
+   GAME BOY RETRO CONSOLE
+   ========================================================================== */
+
+.gameboy-shell {
+  width: 300px;
+  background: linear-gradient(160deg, #1c1f2e 0%, #13151f 60%, #0d0f18 100%);
+  border: 3px solid #000;
+  border-radius: 12px 12px 60px 12px;
+  box-shadow:
+    6px 6px 0 #000,
+    -2px -2px 0 rgba(255,255,255,0.07),
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 0 30px rgba(0, 255, 136, 0.08),
+    0 0 60px rgba(0, 240, 255, 0.04);
+  padding: 14px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  flex-shrink: 0;
+  outline: 1px solid #2a2f46;
+  outline-offset: 2px;
+}
+
+/* Brand bar at top */
+.gb-brand-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px 10px;
+  border-bottom: 1px solid #1e2435;
+}
+
+.gb-brand-name {
+  font-family: var(--font-arcade);
+  font-size: 0.72rem;
+  color: var(--pixel-mint);
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px var(--pixel-mint);
+}
+
+.gb-brand-model {
+  font-family: var(--font-arcade);
+  font-size: 0.55rem;
+  color: var(--pixel-cyan);
+  letter-spacing: 1px;
+}
+
+/* Screen housing */
+.gb-screen-housing {
+  margin: 10px 0 12px;
+  padding: 10px;
+  background: #0a0c14;
+  border: 3px solid #000;
+  border-radius: 4px 4px 28px 4px;
+  box-shadow:
+    inset 0 0 0 2px #1a1f30,
+    inset 0 2px 8px rgba(0,0,0,0.8);
+  position: relative;
+}
+
+.gb-screen-bezel {
+  position: relative;
+}
+
+/* Power LED */
+.gb-power-led {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.gb-led-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--pixel-mint);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--pixel-mint), 0 0 12px rgba(0, 255, 136, 0.5);
+  animation: led-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes led-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 6px var(--pixel-mint), 0 0 12px rgba(0, 255, 136, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 3px var(--pixel-mint), 0 0 6px rgba(0, 255, 136, 0.3);
+  }
+}
+
+.gb-led-label {
+  font-family: var(--font-arcade);
+  font-size: 0.45rem;
+  color: var(--pixel-muted);
+  letter-spacing: 1px;
+}
+
+/* The screen itself */
+.gb-screen {
+  width: 100%;
+  aspect-ratio: 10 / 8;
+  background: #001a0a;
+  border: 3px solid #000;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 20px rgba(0,0,0,0.9),
+    inset 0 0 4px rgba(0, 255, 136, 0.15),
+    0 0 0 2px #111820;
+}
+
+/* CRT scanline overlay on the green stats screen */
+.gb-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.08) 0px,
+    rgba(0, 0, 0, 0.08) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 4;
+  border-radius: 1px;
+}
+
+/* Subtle green phosphor glow on screen edges */
+.gb-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 30px rgba(0, 255, 136, 0.05);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.gb-screen-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.45) 0px,
+    rgba(0, 0, 0, 0.45) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.gb-screen-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-terminal);
+}
+
+.gb-screen-header {
+  font-size: 0.85rem;
+  color: var(--pixel-mint);
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.25);
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px var(--pixel-mint);
+}
+
+.gb-stat-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gb-stat-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  font-size: 0.88rem;
+  line-height: 1.2;
+}
+
+.gb-stat-key {
+  color: #5a8f6a;
+  min-width: 40px;
+  font-size: 0.82rem;
+}
+
+.gb-stat-dots {
+  flex: 1;
+  color: #1e3828;
+  font-size: 0.7rem;
+  overflow: hidden;
+  letter-spacing: -1px;
+}
+
+.gb-stat-val {
+  color: #a8d8b2;
+  font-size: 0.82rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.gb-stat-val.green {
+  color: var(--pixel-mint);
+  text-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
+}
+
+.gb-stat-val.gold {
+  color: var(--pixel-gold);
+  text-shadow: 0 0 6px rgba(255, 190, 11, 0.5);
+}
+
+.gb-screen-footer {
+  border-top: 1px solid rgba(0, 255, 136, 0.2);
+  padding-top: 4px;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--pixel-mint);
+  position: relative;
+}
+
+.gb-blink {
+  animation: blink-text 1.2s infinite steps(2);
+  text-shadow: 0 0 8px var(--pixel-mint);
+}
+
+/* Blinking cursor after "PRESS A TO HIRE" */
+.gb-screen-footer::after {
+  content: "_";
+  display: inline;
+  color: var(--pixel-mint);
+  text-shadow: 0 0 8px var(--pixel-mint);
+  animation: cursor-blink 0.8s steps(2) infinite;
+  margin-left: 2px;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Controls row */
+.gb-controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 2px;
+}
+
+/* D-Pad */
+.gb-dpad {
+  position: relative;
+  width: 72px;
+  height: 72px;
+}
+
+.gb-dpad-v,
+.gb-dpad-h {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.gb-dpad-h {
+  flex-direction: row;
+}
+
+.gb-dpad-btn {
+  background: #1a1f2e;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000, inset 0 1px 0 rgba(255,255,255,0.1);
+  color: var(--pixel-muted);
+  font-size: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.1s ease;
+}
+
+.gb-dpad-btn.up, .gb-dpad-btn.down {
+  width: 24px;
+  height: 22px;
+  border-radius: 3px 3px 0 0;
+}
+
+.gb-dpad-btn.down {
+  border-radius: 0 0 3px 3px;
+}
+
+.gb-dpad-btn.left, .gb-dpad-btn.right {
+  width: 22px;
+  height: 24px;
+  border-radius: 3px 0 0 3px;
+}
+
+.gb-dpad-btn.right {
+  border-radius: 0 3px 3px 0;
+}
+
+.gb-dpad-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  background: #141826;
+  border: 2px solid #000;
+  z-index: 2;
+}
+
+.gb-dpad-btn:active {
+  transform: scale(0.95);
+  background: #232a3d;
+  filter: brightness(1.15);
+  box-shadow: 1px 1px 0 #000;
+}
+
+.gb-dpad-btn:hover {
+  background: #222940;
+  box-shadow: 2px 2px 0 #000, inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* Center SELECT / START */
+.gb-center-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gb-sys-btn {
+  background: #11131e;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #000;
+  color: var(--pixel-muted);
+  font-family: var(--font-arcade);
+  font-size: 0.42rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.1s ease;
+}
+
+.gb-sys-btn:hover {
+  color: var(--pixel-gold);
+  border-color: var(--pixel-gold);
+  box-shadow: 2px 2px 0 var(--pixel-gold);
+  transform: scale(0.95);
+}
+
+.gb-sys-btn:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 0;
+  filter: brightness(1.2);
+}
+
+/* A / B action buttons */
+.gb-ab-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.gb-ab-labels {
+  display: flex;
+  gap: 14px;
+  padding-right: 4px;
+  font-family: var(--font-arcade);
+  font-size: 0.45rem;
+  color: var(--pixel-muted);
+}
+
+.gb-ab-btns {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.gb-action-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.gb-action-btn.b {
+  background: radial-gradient(circle at 35% 35%, #3a3060, #1e1840);
+  box-shadow: 2px 2px 0 #000, 0 0 8px rgba(157, 78, 221, 0.4);
+}
+
+.gb-action-btn.a {
+  background: radial-gradient(circle at 35% 35%, #803050, #501828);
+  box-shadow: 2px 2px 0 #000, 0 0 8px rgba(255, 42, 109, 0.5);
+}
+
+.gb-action-btn:hover.b {
+  box-shadow: 2px 2px 0 #000, 0 0 14px rgba(157, 78, 221, 0.8);
+  transform: scale(0.95);
+  filter: brightness(1.2);
+}
+
+.gb-action-btn:hover.a {
+  box-shadow: 2px 2px 0 #000, 0 0 14px rgba(255, 42, 109, 0.9);
+  transform: scale(0.95);
+  filter: brightness(1.2);
+}
+
+.gb-action-btn:active {
+  transform: scale(0.9);
+  box-shadow: 0 0 0 #000;
+  filter: brightness(1.3);
+}
+
+/* Speaker grille */
+.gb-speaker {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  padding: 8px 4px 4px;
+  margin-left: auto;
+  width: 80px;
+}
+
+.gb-speaker-dot {
+  width: 4px;
+  height: 4px;
+  background: #1a1f2e;
+  border-radius: 50%;
+  border: 1px solid #0d0f18;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.8);
+}
+
+/* Bottom label strip */
+.gb-bottom-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 8px 4px 0;
+  border-top: 1px solid #151a26;
+}
+
+.gb-bottom-label span:first-child {
+  font-family: var(--font-arcade);
+  font-size: 0.6rem;
+  color: var(--pixel-mint);
+  text-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
+  letter-spacing: 1px;
+}
+
+.gb-serial {
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  color: #2a3348;
+  letter-spacing: 0.5px;
+}

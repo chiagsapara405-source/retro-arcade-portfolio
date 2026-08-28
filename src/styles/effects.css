@@ -1,0 +1,56 @@
+/* ==========================================================================
+   CRT EFFECTS & SPLIT TEXT
+   ========================================================================== */
+
+/* CRT Scanlines Overlay */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 4px, 6px 100%;
+  opacity: 0.5;
+}
+
+.crt-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 998;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(0, 255, 136, 0.05);
+}
+
+/* Pixel Split Text */
+.split-text {
+  display: inline;
+}
+.word-wrap {
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+.word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Shared Animations */
+@keyframes blink-text {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
