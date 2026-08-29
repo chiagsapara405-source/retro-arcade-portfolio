@@ -12,6 +12,7 @@ import ToolsMarquee from "./components/ToolsMarquee";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import PixelCursor from "./components/PixelCursor";
 
 import { useGsapAnimations } from "./hooks/useGsapAnimations";
 import { useMenuAnimation } from "./hooks/useMenuAnimation";
@@ -48,6 +49,9 @@ export const App: React.FC = () => {
 
   return (
     <div ref={compRef} className="retro-app-root">
+      {/* Custom pixel cursor */}
+      <PixelCursor />
+
       {/* CRT Scanlines and Screen Vignette FX */}
       <div className="crt-overlay" aria-hidden="true"></div>
       <div className="crt-vignette" aria-hidden="true"></div>

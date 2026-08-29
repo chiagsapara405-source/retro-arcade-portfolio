@@ -2,6 +2,7 @@
    RESPONSIVE STYLES
    ========================================================================== */
 
+/* ── Tablet / Small Desktop (≤900px) ──────────────────────────────────────── */
 @media (max-width: 900px) {
   .hud-nav-links {
     display: none;
@@ -34,5 +35,143 @@
   }
   .gameboy-shell {
     width: 260px;
+  }
+}
+
+/* ── Mobile (≤768px) ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* HUD */
+  .hud-bars-row {
+    display: none;
+  }
+  .pixel-btn-quest {
+    font-size: 0.6rem;
+    padding: 7px 10px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 80px 16px 50px;
+  }
+  .hero-right {
+    display: none;
+  }
+  .hero-content-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: unset;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .pixel-btn-primary,
+  .pixel-btn-secondary {
+    min-width: unset;
+    width: 100%;
+    font-size: 0.68rem;
+  }
+
+  /* Stats */
+  .stats-section {
+    padding: 60px 16px;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* Projects */
+  .projects-section {
+    padding: 60px 16px;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Skills */
+  .skills-section {
+    padding: 60px 16px;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* About */
+  .about-section {
+    padding: 60px 16px;
+  }
+  .dialogue-box-container {
+    padding: 28px 18px;
+  }
+  .dialogue-text {
+    font-size: 1.1rem;
+  }
+
+  /* Contact */
+  .contact-section {
+    padding: 70px 16px;
+  }
+  .boss-fight-card {
+    padding: 30px 18px;
+  }
+  .contact-actions-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-boss-action {
+    justify-content: center;
+  }
+}
+
+/* ── Small Mobile (≤480px) ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* HUD — hide HP/MP label text, keep avatar + hamburger */
+  .hud-stats-group {
+    display: none;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 72px 12px 40px;
+  }
+  .stage-badge {
+    font-size: 0.55rem;
+  }
+
+  /* Stats — single column on very small screens */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .stat-number {
+    font-size: 2.4rem;
+  }
+
+  /* Skills — single column */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Projects */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact */
+  .boss-fight-card {
+    padding: 24px 14px;
+    box-shadow: 4px 4px 0 var(--pixel-ruby), -2px -2px 0 var(--pixel-mint);
+  }
+
+  /* Section headers */
+  .section-title {
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
+  }
+
+  /* Footer */
+  .footer-credits-row {
+    gap: 10px;
   }
 }

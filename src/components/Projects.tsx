@@ -1,6 +1,7 @@
 import React from "react";
 import SplitText from "./SplitText";
 import { projects } from "../data/projects";
+import { githubUrl } from "../data/siteData";
 
 const Projects: React.FC = () => {
   return (
@@ -38,7 +39,15 @@ const Projects: React.FC = () => {
               <div className="project-screen">
                 <div className="project-screen-scanline"></div>
                 <div className="project-badge-slot">{project.badge}</div>
-                <div className="project-pixel-art-icon">{project.icon}</div>
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-screen-img"
+                  />
+                ) : (
+                  <div className="project-pixel-art-icon">{project.icon}</div>
+                )}
               </div>
               <div className="project-info">
                 <h3 className="project-title">
@@ -75,6 +84,27 @@ const Projects: React.FC = () => {
               </div>
             </div>
           ))}
+
+          {/* View All Projects card */}
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card project-card--view-all"
+          >
+            <div className="cartridge-grip">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div className="view-all-inner">
+              <div className="view-all-icon">⬡</div>
+              <div className="view-all-label">VIEW ALL</div>
+              <div className="view-all-sub">PROJECTS</div>
+              <div className="view-all-arrow">▶▶</div>
+              <div className="view-all-url">github.com/chiagsapara405-source</div>
+            </div>
+          </a>
         </div>
       </div>
     </section>

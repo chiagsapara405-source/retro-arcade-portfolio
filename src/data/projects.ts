@@ -1,10 +1,14 @@
 import { retroPortfolioUrl } from "./siteData";
+import quickpayImg from "../assets/quickpay.png";
+import rasoiImg from "../assets/rasoi.png";
+import caffeineImg from "../assets/caffeine.png";
 
 export interface Project {
   id: number;
   title: string;
   badge: string;
   icon: string;
+  image?: string;
   description: string;
   tags: string[];
   actions: {
@@ -21,6 +25,7 @@ export const projects: Project[] = [
     title: "QUICKPAY",
     badge: "[QUEST #01 // FINTECH]",
     icon: "💸",
+    image: quickpayImg,
     description:
       "Closed-loop UPI-style payment simulator. Real Supabase auth with OTP login, virtual wallets, 4-digit PIN protection with lockout, full transaction ledgers, and shareable receipts.",
     tags: ["Next.js 16", "Supabase", "React 19", "Tailwind CSS 4", "PLpgSQL"],
@@ -42,6 +47,7 @@ export const projects: Project[] = [
     title: "RASOI",
     badge: "[QUEST #02 // FOOD APP]",
     icon: "🍲",
+    image: rasoiImg,
     description:
       "Gujarati spice & thali ordering experience — browse authentic regional menus, customize spice levels, and place orders through a warm, food-first interface.",
     tags: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
@@ -59,6 +65,7 @@ export const projects: Project[] = [
     title: "CAFFEINE",
     badge: "[QUEST #03 // FULL-STACK]",
     icon: "☕",
+    image: caffeineImg,
     description:
       "Full-stack coffee ordering app — JWT auth, drink customization, cart with undo, loyalty stamp cards, and an admin dashboard. Express + MongoDB API with server-side pricing, deployed serverless on Vercel.",
     tags: ["React 19", "GSAP", "Express 5", "MongoDB", "Vercel"],

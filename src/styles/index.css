@@ -4,6 +4,7 @@
    ========================================================================== */
 
 @import './variables.css';
+@import './cursor.css';
 @import './base.css';
 @import './effects.css';
 @import './preloader.css';
