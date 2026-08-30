@@ -1,5 +1,6 @@
 import React from "react";
 import SplitText from "./SplitText";
+import heroBg from '../assets/pixel-art-landscape-mountains-and-flower.jpg';
 import GameBoy from "./GameBoy";
 
 interface HeroProps {
@@ -13,7 +14,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <div className="hero-image-placeholder">
           <img
             className="hero-image"
-            src="https://png.pngtree.com/thumb_back/fh260/background/20241231/pngtree-animated-gif-webcam-overlay-pixel-image_16531479.jpg"
+            src={heroBg}
             alt="Chirag Sapara - Retro Pixel Workspace"
             loading="eager"
           />
