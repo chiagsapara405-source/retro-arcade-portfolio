@@ -9,6 +9,7 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>) => 
   useLayoutEffect(() => {
     if (!compRef.current) return;
 
+    const media = gsap.matchMedia();
     const ctx = gsap.context(() => {
       // 1. Boot / Preloader Sequence
       const bootTl = gsap.timeline();
@@ -115,40 +116,58 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>) => 
         },
       });
 
-      // 4. Hero Parallax Effects (Stronger)
-      gsap.to(".hero-image", {
-        yPercent: 30,
-        scale: 1.2,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      // 4. Desktop parallax: damped, low-amplitude layers prevent scroll jitter.
+      media.add(
+        "(min-width: 769px) and (prefers-reduced-motion: no-preference)",
+        () => {
+          gsap.set(".hero-image", { yPercent: 0, scale: 1.08, force3D: true });
 
-      gsap.to(".gameboy-shell", {
-        yPercent: 22,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+          gsap.to(".hero-image", {
+            yPercent: 12,
+            scale: 1.13,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".hero",
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.7,
+            },
+          });
 
-      gsap.to(".hero-content-grid", {
-        yPercent: -8,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+          gsap.to(".gameboy-shell", {
+            yPercent: 8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".hero",
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.7,
+            },
+          });
+
+          gsap.to(".hero-content-grid", {
+            yPercent: -3,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".hero",
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.7,
+            },
+          });
+
+          gsap.to(".massive-arcade-banner", {
+            xPercent: -3,
+            ease: "none",
+            scrollTrigger: {
+              trigger: "footer",
+              start: "top bottom",
+              end: "bottom bottom",
+              scrub: 0.8,
+            },
+          });
+        }
+      );
 
       // 5. Stat Counter Animations
       gsap.fromTo(
@@ -270,19 +289,11 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>) => 
         }
       );
 
-      // 11. Footer Banner Parallax
-      gsap.to(".massive-arcade-banner", {
-        xPercent: -6,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "footer",
-          start: "top bottom",
-          end: "bottom bottom",
-          scrub: 1,
-        },
-      });
     }, compRef);
 
-    return () => ctx.revert();
+    return () => {
+      media.revert();
+      ctx.revert();
+    };
   }, [compRef]);
 };

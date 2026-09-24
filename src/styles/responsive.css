@@ -175,3 +175,10 @@
     gap: 10px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image,
+  .massive-arcade-banner {
+    will-change: auto;
+  }
+}
