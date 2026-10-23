@@ -11,6 +11,8 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, ena
 
     const media = gsap.matchMedia();
     const ctx = gsap.context(() => {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reducedMotion) return;
       // Hero intro is coordinated by the editorial preloader component.
       gsap.timeline()
         .fromTo(
@@ -20,7 +22,7 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, ena
             y: 0,
             opacity: 1,
             duration: 0.5,
-            ease: "steps(6)",
+            ease: "power2.out",
           },
           "-=0.1"
         )
@@ -66,7 +68,7 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, ena
             opacity: 1,
             stagger: 0.1,
             duration: 0.4,
-            ease: "steps(4)",
+            ease: "power2.out",
           },
           "-=0.2"
         )
@@ -162,7 +164,7 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, ena
           opacity: 1,
           duration: 0.6,
           stagger: 0.1,
-          ease: "steps(6)",
+          ease: "power2.out",
           scrollTrigger: {
             trigger: ".stats-section",
             start: "top 85%",
@@ -216,13 +218,18 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, ena
           opacity: 1,
           duration: 0.5,
           stagger: 0.1,
-          ease: "steps(6)",
+          ease: "power2.out",
           scrollTrigger: {
             trigger: ".projects-grid",
             start: "top 85%",
           },
         }
       );
+
+      gsap.fromTo(".featured-project-image", { clipPath: "inset(8% 0 8% 0)", opacity: 0.65 }, {
+        clipPath: "inset(0% 0 0% 0)", opacity: 1, duration: 0.75, ease: "power2.out",
+        scrollTrigger: { trigger: ".featured-project", start: "top 78%", once: true },
+      });
 
       // 8. Skill Slots Stagger
       gsap.fromTo(
