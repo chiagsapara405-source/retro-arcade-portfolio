@@ -11,13 +11,15 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <div className="footer-container">
         <div className="footer-nav">
           {footerNavLinks.map((link) => (
-            <a key={link.id} onClick={() => onNavigate(link.id)}>
+            <a key={link.id} href={`#${link.id}`} onClick={(event) => { event.preventDefault(); onNavigate(link.id); }}>
               {link.label}
             </a>
           ))}
         </div>
 
-        <div className="massive-arcade-banner">CHIRAG SAPARA</div>
+        <div className="massive-arcade-banner">
+          C H I R A G <br /> <span style={{ paddingTop: "10px" }}>S A P A R A</span>
+        </div>
 
         <div className="footer-credits-row">
           <div>[DEV_CREDITS]: DESIGNED &amp; DEVELOPED BY CHIRAG SAPARA</div>

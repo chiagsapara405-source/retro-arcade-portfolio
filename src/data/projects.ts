@@ -88,7 +88,7 @@ export const projects: Project[] = [
     badge: "[QUEST #04 // INTERACTIVE]",
     icon: "🕹️",
     description:
-      "This site. 8-bit/16-bit arcade portfolio with GSAP ScrollTrigger animation pipelines, CRT scanline FX, RPG dialogue boxes, a HUD navigation system, and a playable Game Boy console.",
+      "This portfolio pairs an editorial layout with retro arcade-inspired labels and GSAP motion.",
     tags: ["React 19", "GSAP 3", "TypeScript", "Pixel Art"],
     actions: [
       {

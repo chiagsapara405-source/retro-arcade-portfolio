@@ -22,9 +22,7 @@ const Skills: React.FC = () => {
         <h2 className="section-title">
           <SplitText>Skill Tree & Inventory</SplitText>
         </h2>
-        <p className="section-desc">
-          Weapons and spell proficiencies equipped for full-stack engineering.
-        </p>
+        <p className="section-desc">Capabilities I’ve practiced in projects, alongside areas I’m currently exploring.</p>
 
         <div className="skills-grid">
           {skillCategories.map((category) => (
@@ -36,12 +34,7 @@ const Skills: React.FC = () => {
                   <div className="skill-badge-level">{category.level}</div>
                 </div>
               </div>
-              <div className="skill-bar-outer">
-                <div
-                  className="skill-bar-inner"
-                  style={{ width: `${category.percentage}%` }}
-                ></div>
-              </div>
+              <div className="skill-evidence">{category.id === "ai" ? "CURRENTLY LEARNING" : "USED IN PROJECTS"}</div>
               <div className="skill-tags-list">
                 {category.skills.map((skill, idx) => (
                   <span key={idx} className="skill-chip">
