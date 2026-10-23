@@ -1,73 +1,28 @@
 import React from "react";
-import SplitText from "./SplitText";
-import heroBg from '../assets/pixel-art-landscape-mountains-and-flower.jpg';
-import GameBoy from "./GameBoy";
+import quickPayPreview from "../assets/quickpay.png";
 
-interface HeroProps {
-  onNavigate: (id: string) => void;
-}
+interface HeroProps { onNavigate: (id: string) => void; }
 
-const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
-  return (
-    <section id="hero" className="hero">
-      <div className="hero-bg-wrapper">
-        <div className="hero-image-placeholder">
-          <img
-            className="hero-image"
-            src={heroBg}
-            alt="Chirag Sapara - Retro Pixel Workspace"
-            loading="eager"
-          />
+const Hero: React.FC<HeroProps> = ({ onNavigate }) => (
+  <section id="hero" className="hero">
+    <div className="hero-content-grid">
+      <div className="hero-left">
+        <div className="stage-badge"><span className="blinker" />CHIRAG SAPARA / DEVELOPER IN PROGRESS</div>
+        <h1 className="hero-headline"><span className="hero-line">I BUILD FOR</span><span className="hero-line">THE WEB.</span><span className="hero-line highlight-green">EXPLORING AI.</span></h1>
+        <p className="hero-subtitle">I&apos;m Chirag, a BCA student building full-stack applications and exploring how AI can make software more useful.</p>
+        <div className="hero-actions">
+          <button className="pixel-btn-primary" onClick={() => onNavigate("projects")}>Explore selected work <span aria-hidden="true">↗</span></button>
+          <button className="pixel-btn-secondary" onClick={() => onNavigate("contact")}>Let&apos;s connect <span aria-hidden="true">↗</span></button>
         </div>
       </div>
-
-      <div className="hero-content-grid">
-        {/* Left Column: Headline & Action Buttons */}
-        <div className="hero-left">
-          <div className="stage-badge">
-            <span className="blinker"></span>
-            STAGE 01 // PRESS START
-          </div>
-
-          <h1 className="hero-headline">
-            <SplitText>
-              Building <span className="highlight-green">Full-Stack</span>
-              <br />
-              applications with
-              <br />
-              <span className="highlight-cyan">clean pixel</span> code
-            </SplitText>
-          </h1>
-
-          <p className="hero-subtitle">
-            I am Chirag Sapara, a BCA student and full-stack developer from
-            India. I forge web applications that solve real-world problems,
-            with a specialized focus on AI-driven interfaces & scalable logic.
-          </p>
-
-          <div className="hero-actions">
-            <button
-              className="pixel-btn-primary"
-              onClick={() => onNavigate("projects")}
-            >
-              ► SELECT QUESTS
-            </button>
-            <button
-              className="pixel-btn-secondary"
-              onClick={() => onNavigate("contact")}
-            >
-              ✉ JOIN PARTY
-            </button>
-          </div>
-        </div>
-
-        {/* Right Column: Game Boy Console */}
-        <div className="hero-right">
-          <GameBoy onNavigate={onNavigate} />
-        </div>
-      </div>
-    </section>
-  );
-};
+      <a className="hero-feature" href="#projects" aria-label="View QuickPay in selected work">
+        <div className="hero-feature-meta"><span>01 / SELECTED WORK</span><span>FINTECH</span></div>
+        <div className="hero-feature-image"><img src={quickPayPreview} alt="QuickPay project interface preview" loading="eager" /></div>
+        <div className="hero-feature-caption"><div><h2>QuickPay</h2><p>Closed-loop payment simulator</p></div><span className="hero-feature-arrow" aria-hidden="true">↗</span></div>
+        <div className="hero-feature-stack">NEXT.JS&nbsp;&nbsp; / &nbsp;&nbsp;SUPABASE&nbsp;&nbsp; / &nbsp;&nbsp;REACT</div>
+      </a>
+    </div>
+  </section>
+);
 
 export default Hero;

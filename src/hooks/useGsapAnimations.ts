@@ -4,37 +4,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>) => {
+export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, enabled = true) => {
   // Main GSAP Animation Context
   useLayoutEffect(() => {
-    if (!compRef.current) return;
+    if (!compRef.current || !enabled) return;
 
     const media = gsap.matchMedia();
     const ctx = gsap.context(() => {
-      // 1. Boot / Preloader Sequence
-      const bootTl = gsap.timeline();
-      bootTl
-        .to(".pixel-loading-bar", {
-          width: "100%",
-          duration: 1.0,
-          ease: "steps(12)",
-        })
-        .to(".preloader-box", {
-          scale: 1.03,
-          opacity: 0,
-          duration: 0.35,
-          delay: 0.1,
-          ease: "steps(4)",
-        })
-        .to(".preloader", {
-          opacity: 0,
-          duration: 0.25,
-          onComplete: () => {
-            const el = document.querySelector(".preloader") as HTMLElement;
-            if (el) el.style.display = "none";
-          },
-        })
-        // 2. HUD & Hero Entrance
+      // Hero intro is coordinated by the editorial preloader component.
+      gsap.timeline()
         .fromTo(
           ".retro-hud-header",
           { y: -60, opacity: 0 },
@@ -58,14 +36,14 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>) => 
           "-=0.2"
         )
         .fromTo(
-          ".hero-headline .word",
+          ".hero-line",
           { y: "110%", opacity: 0 },
           {
             y: "0%",
             opacity: 1,
             duration: 0.6,
             stagger: 0.03,
-            ease: "steps(6)",
+            ease: "power3.out",
           },
           "-=0.2"
         )
@@ -91,6 +69,12 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>) => 
             ease: "steps(4)",
           },
           "-=0.2"
+        )
+        .fromTo(
+          ".hero-feature",
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: "power2.out" },
+          "-=0.25"
         )
         .fromTo(
           ".gameboy-shell",
@@ -295,5 +279,5 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>) => 
       media.revert();
       ctx.revert();
     };
-  }, [compRef]);
+  }, [compRef, enabled]);
 };

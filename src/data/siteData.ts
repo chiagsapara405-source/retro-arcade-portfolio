@@ -51,29 +51,26 @@ export const stats: Stat[] = [
 ];
 
 export const menuLinks = [
-  { id: "hero", label: "01 // STAGE START" },
-  { id: "stats", label: "02 // STATS" },
-  { id: "projects", label: "03 // QUEST LOG" },
-  { id: "skills", label: "04 // POWER-UPS" },
-  { id: "about", label: "05 // NPC LORE" },
-  { id: "contact", label: "06 // FINAL STAGE" },
+  { id: "hero", label: "HOME" },
+  { id: "about", label: "ABOUT" },
+  { id: "projects", label: "WORK" },
+  { id: "skills", label: "SKILLS" },
+  { id: "contact", label: "CONTACT" },
 ];
 
 export const navLinks = [
-  { id: "stats", label: "STATS" },
-  { id: "projects", label: "QUESTS" },
-  { id: "skills", label: "ARSENAL" },
-  { id: "about", label: "LORE" },
+  { id: "about", label: "ABOUT" },
+  { id: "projects", label: "WORK" },
+  { id: "skills", label: "SKILLS" },
   { id: "contact", label: "CONTACT" },
 ];
 
 export const footerNavLinks = [
-  { id: "hero", label: "01 // HOME" },
-  { id: "stats", label: "02 // STATS" },
-  { id: "projects", label: "03 // QUESTS" },
-  { id: "skills", label: "04 // ARSENAL" },
-  { id: "about", label: "05 // LORE" },
-  { id: "contact", label: "06 // CONTACT" },
+  { id: "hero", label: "HOME" },
+  { id: "about", label: "ABOUT" },
+  { id: "projects", label: "WORK" },
+  { id: "skills", label: "SKILLS" },
+  { id: "contact", label: "CONTACT" },
 ];
 
 export const githubUrl = "https://github.com/chiagsapara405-source";

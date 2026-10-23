@@ -31,18 +31,16 @@ const About: React.FC = () => {
             </div>
             <div className="dialogue-text-body">
               <p className="dialogue-text">
-                &ldquo;Greetings, adventurer! I am Chirag Sapara, a BCA
-                third-semester student from India. I have forged over fifteen
-                practical projects because I believe true mastery only comes
-                from actively shipping code and solving real problems.&rdquo;
+                I started programming with C, where I learned to think in terms
+                of logic and problem-solving. Now I’m building on that foundation
+                through modern web development and practical projects.
               </p>
               <p
                 className="dialogue-text"
                 style={{ color: "var(--pixel-cyan)" }}
               >
-                &ldquo;Whether it is architecting an AI-powered conversational
-                experience or structuring scalable backend APIs, I treat every
-                project as an opportunity to raise the bar.&rdquo;
+                I’m pursuing a BCA at RK University and exploring full-stack
+                development and AI integration, one project at a time.
               </p>
               <div className="dialogue-cursor-indicator">▼</div>
             </div>
