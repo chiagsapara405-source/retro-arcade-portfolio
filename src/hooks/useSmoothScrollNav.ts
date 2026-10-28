@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, type RefObject } from "react";
+import type Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -8,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const SECTION_IDS = menuLinks.map((link) => link.id);
 
-export const useSmoothScrollNav = () => {
+export const useSmoothScrollNav = (lenisRef: RefObject<Lenis | null>) => {
   const [activeSection, setActiveSection] = useState<string>("hero");
   const isNavigating = useRef(false);
 
@@ -47,6 +48,20 @@ export const useSmoothScrollNav = () => {
     if (!target) return;
 
     setActiveSection(id);
+
+    if (lenisRef.current) {
+      const hud = document.querySelector<HTMLElement>(".retro-hud-header");
+      const offset = id === "hero" ? 0 : (hud?.offsetHeight ?? 0) + 12;
+      isNavigating.current = true;
+      lenisRef.current.scrollTo(id === "hero" ? 0 : target, {
+        offset: -offset,
+        duration: 1.2,
+        onComplete: () => {
+          isNavigating.current = false;
+        },
+      });
+      return;
+    }
 
     if (id === "hero") {
       isNavigating.current = true;

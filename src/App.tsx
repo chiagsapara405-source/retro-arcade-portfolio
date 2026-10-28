@@ -1,4 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./index.css";
 
 import HUD from "./components/HUD";
@@ -17,6 +20,31 @@ export const App: React.FC = () => {
   const compRef = useRef<HTMLDivElement>(null);
   const [copiedEmail, setCopiedEmail] = useState<boolean>(false);
   const [introReady, setIntroReady] = useState(false);
+  const lenisRef = useRef<Lenis | null>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const lenis = new Lenis({
+      smoothWheel: true,
+      syncTouch: false,
+      lerp: 0.1,
+    });
+    lenisRef.current = lenis;
+
+    const onLenisScroll = () => ScrollTrigger.update();
+    const onGsapTick = (time: number) => lenis.raf(time * 1000);
+    lenis.on("scroll", onLenisScroll);
+    gsap.ticker.add(onGsapTick);
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      gsap.ticker.remove(onGsapTick);
+      lenis.off("scroll", onLenisScroll);
+      lenis.destroy();
+      lenisRef.current = null;
+    };
+  }, []);
 
   // Initialize GSAP animations
   useGsapAnimations(compRef, introReady);
@@ -24,7 +52,7 @@ export const App: React.FC = () => {
 
   // GSAP-powered smooth scroll navigation + active stage tracking
   const { scrollToSection: navigateToSection, activeSection } =
-    useSmoothScrollNav();
+    useSmoothScrollNav(lenisRef);
 
   // Smooth Section Scroll
   const scrollToSection = (id: string) => {
