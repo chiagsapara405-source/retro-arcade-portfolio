@@ -24,7 +24,7 @@ const Skills: React.FC = () => {
         </h2>
         <p className="section-desc">Capabilities I’ve practiced in projects, alongside areas I’m currently exploring.</p>
 
-        <div className="skills-grid">
+        <div className="skills-grid skills-bento">
           {skillCategories.map((category) => (
             <div key={category.id} className="skill-slot-card">
               <div className="skill-slot-header">

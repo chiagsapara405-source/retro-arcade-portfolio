@@ -220,8 +220,9 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, ena
           stagger: 0.1,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: ".projects-grid",
+            trigger: ".supporting-projects",
             start: "top 85%",
+            once: true,
           },
         }
       );
@@ -238,12 +239,13 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, ena
         {
           scale: 1,
           opacity: 1,
-          duration: 0.5,
-          stagger: 0.08,
-          ease: "steps(5)",
+          duration: 0.55,
+          stagger: 0.1,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: ".skills-grid",
-            start: "top 85%",
+            start: "top 82%",
+            once: true,
           },
         }
       );
@@ -256,10 +258,11 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, ena
           y: 0,
           opacity: 1,
           duration: 0.6,
-          ease: "steps(6)",
+          ease: "power2.out",
           scrollTrigger: {
             trigger: ".dialogue-box-container",
             start: "top 85%",
+            once: true,
           },
         }
       );
@@ -279,6 +282,11 @@ export const useGsapAnimations = (compRef: RefObject<HTMLDivElement | null>, ena
           },
         }
       );
+
+      gsap.fromTo(".footer-invite, .footer-nav, .massive-arcade-banner, .footer-credits-row",
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.65, stagger: 0.12, ease: "power2.out",
+          scrollTrigger: { trigger: "footer", start: "top 82%", once: true } });
 
     }, compRef);
 

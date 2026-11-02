@@ -9,6 +9,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer>
       <div className="footer-container">
+        <div className="footer-invite">
+          <p>Thanks for making it this far.</p>
+          <a href="mailto:chiragsapra405@gmail.com">Have a project in mind? Let’s talk <span aria-hidden="true">↗</span></a>
+        </div>
         <div className="footer-nav">
           {footerNavLinks.map((link) => (
             <a key={link.id} href={`#${link.id}`} onClick={(event) => { event.preventDefault(); onNavigate(link.id); }}>
@@ -17,9 +21,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           ))}
         </div>
 
-        <div className="massive-arcade-banner">
-          C H I R A G <br /> <span style={{ paddingTop: "10px" }}>S A P A R A</span>
-        </div>
+        <div className="massive-arcade-banner" aria-label="Chirag Sapara">CHIRAG<br /><span className="line">SAPARA</span></div>
 
         <div className="footer-credits-row">
           <div>[DEV_CREDITS]: DESIGNED &amp; DEVELOPED BY CHIRAG SAPARA</div>

@@ -46,6 +46,13 @@ footer {
   border-bottom: 2px dashed #141e30;
   padding: 18px 0;
   will-change: transform;
+ line-height: 10.2;
+  
+}
+
+.line {
+  
+ line-height: 1.2;
 }
 
 .footer-credits-row {
