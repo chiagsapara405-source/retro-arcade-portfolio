@@ -49,9 +49,10 @@ export const useSmoothScrollNav = (lenisRef: RefObject<Lenis | null>) => {
 
     setActiveSection(id);
 
+    const hud = document.querySelector<HTMLElement>(".retro-hud-header");
+    const offset = id === "hero" ? 0 : (hud?.offsetHeight ?? 0) + 12;
+
     if (lenisRef.current) {
-      const hud = document.querySelector<HTMLElement>(".retro-hud-header");
-      const offset = id === "hero" ? 0 : (hud?.offsetHeight ?? 0) + 12;
       isNavigating.current = true;
       lenisRef.current.scrollTo(id === "hero" ? 0 : target, {
         offset: -offset,
@@ -60,6 +61,17 @@ export const useSmoothScrollNav = (lenisRef: RefObject<Lenis | null>) => {
           isNavigating.current = false;
         },
       });
+      return;
+    }
+
+    // Lenis is intentionally not initialized when reduced motion is enabled.
+    // Avoid the GSAP fallback so navigation remains immediate as well.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const top =
+        id === "hero"
+          ? 0
+          : window.scrollY + target.getBoundingClientRect().top - offset;
+      window.scrollTo({ top, behavior: "auto" });
       return;
     }
 
@@ -76,8 +88,6 @@ export const useSmoothScrollNav = (lenisRef: RefObject<Lenis | null>) => {
       return;
     }
 
-    const hud = document.querySelector<HTMLElement>(".retro-hud-header");
-    const offset = (hud?.offsetHeight ?? 0) + 12;
     const distance = Math.abs(target.getBoundingClientRect().top - offset);
 
     isNavigating.current = true;
